@@ -262,7 +262,15 @@ public class Player : BaseCharacter
             Vector3 directionFromPlayer = (hit.point - _weaponDirection.position).normalized;
             if (Physics.Raycast(_weaponDirection.position, directionFromPlayer, out hit, float.MaxValue))
             {
-                Instantiate(_genericImpact, hit.point, Quaternion.LookRotation(hit.normal));
+                Surface hitSurface = hit.collider.GetComponent<Surface>();
+                if (hitSurface != null)
+                {
+                    hitSurface.CreateParticles(hit.point, hit.normal);
+                }
+                else
+                {
+                    Instantiate(_genericImpact, hit.point, Quaternion.LookRotation(hit.normal));
+                }
 
                 Vector3 impactDirection = (hit.point - transform.position).normalized;
                 impactDirection = Vector3.ProjectOnPlane(impactDirection, Vector3.up);
@@ -277,8 +285,8 @@ public class Player : BaseCharacter
                 Health health = hit.collider.GetComponent<Health>();
                 if (health)
                 {
-                    //Hacer pupa
-                    print("Sufreeeeeeee >:D");
+                    //TODO: Damage
+                    print("Dealing damage");
                 }
             }
         }
