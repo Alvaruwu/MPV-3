@@ -1,0 +1,6 @@
+INFORMACIÓN DE ESCENAS
+======================
+
+- Game: Escena principal del juego
+- Start: Escena que contiene el GameManager
+- MainMenu: Escena principal del menú al abrir el juego
