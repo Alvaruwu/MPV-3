@@ -237,3 +237,21 @@ MonoBehaviour:
     Background: {fileID: 2800000, guid: 760b84b0faf68f94bb4a07407d2be0b5, type: 3}
     IsBackgroundRecursive: 0
     IsBackgroundCustom: 0
+  - Type: 1
+    Key: Assets/ResearchCenter
+    SmallIcon: {fileID: 2800000, guid: 5e6ff4f1ced553a4c85620af62e5316d, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 75943b588f83cbc4894e555416591fe8, type: 3}
+    IsIconRecursive: 0
+    IsIconCustom: 0
+    Background: {fileID: 2800000, guid: ecbe7d9ae83c89e4da414151dd5c91a1, type: 3}
+    IsBackgroundRecursive: 0
+    IsBackgroundCustom: 0
+  - Type: 1
+    Key: Assets/GameAssets/PostProcessing
+    SmallIcon: {fileID: 2800000, guid: b3234aceffe9f9b4d9a996be7f0bb931, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 39bbe70e6f465fe4682184eda239d9ae, type: 3}
+    IsIconRecursive: 0
+    IsIconCustom: 0
+    Background: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsBackgroundCustom: 0
