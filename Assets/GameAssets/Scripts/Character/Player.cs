@@ -21,6 +21,29 @@ public class FPlayerSaveState
     }
 }
 
+public class Inventory
+{
+	List<string> lElements = new List<string>();
+
+	public void Add(string newElement)
+	{
+		if (!lElements.Contains(newElement))
+		{
+			lElements.Add(newElement);
+		}
+	}
+
+	public void Remove(string removedElement)
+	{
+		lElements.Remove(removedElement);
+	}
+
+	public bool HasItem(string element)
+	{
+		return lElements.Contains(element);
+	}
+}
+
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Health))]
@@ -56,8 +79,7 @@ public class Player : BaseCharacter
 
     Animator _animator;
     CharacterController _controller;
-
-
+	public Inventory _inventory { get; private set; }
 
     Collider[] _lookables = new Collider[5];
     Vector3 _currentHeadJointDirection;
@@ -81,8 +103,6 @@ public class Player : BaseCharacter
     {
         transform.position = new Vector3(saveState.x, saveState.y, saveState.z);
         HealthReference.SetCurrentLife(saveState._currentHealth);
-
-        //HealthReference = saveState._health;
     }
 
 
@@ -93,6 +113,7 @@ public class Player : BaseCharacter
         _playerCamera = VirtualCameraRefence;
         _animator   = GetComponent<Animator>();
         _controller = GetComponent<CharacterController>();
+		_inventory = new Inventory();
 	}
 
     protected override void Start()

@@ -16,7 +16,7 @@ public class ControllerDirector : MonoBehaviour {
 	[SerializeField] EModes _modes;
 	[SerializeField] bool _blockPlayer;
 	[SerializeField] PlayableDirector _director;
-	[SerializeField] UnityAction _onComplete;
+	[SerializeField] UnityEvent _onComplete;
 
 	float _leftTimeDirector = -1;
 
