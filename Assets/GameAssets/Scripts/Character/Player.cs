@@ -50,23 +50,21 @@ public class Inventory
 public class Player : BaseCharacter 
 {
     [Header("Movement")]
-    [SerializeField] GameObject _playerCamera;
     [SerializeField] float _velocityWalkMovement;
     [SerializeField] float _velocityRunMovement;
     [SerializeField] float _aimingVelocity;
 
     [Header("Weapons")]
     [SerializeField] Transform _weaponDirection;
-    [SerializeField] Transform _weaponIKTarget;
     [SerializeField] GameObject _genericImpact;
     [SerializeField] ParticleSystem _muzzleParticle;
     [SerializeField] AudioClip _shotAudio;
     [SerializeField] float _rateAttack;
     [SerializeField] float _distanceIK;
 
-    [Header("LookAt")]
+	[Header("LookAt")]
+	[SerializeField] Cinemachine.CinemachineFreeLook virtualCamera;
     [SerializeField] Transform _headJoint;
-    [SerializeField] Transform _lookAtTransform;
     [SerializeField] float _headOrientationVelocity = 30;
     [SerializeField] float _maxAngleLookAt = 60;
     [SerializeField] float _maxDistanceToLookAt = 10;
@@ -77,7 +75,9 @@ public class Player : BaseCharacter
     [SerializeField] float _waitStepsDead;
 
 
-    Animator _animator;
+	GameObject _playerCamera;
+
+	Animator _animator;
     CharacterController _controller;
 	public Inventory _inventory { get; private set; }
 
@@ -106,11 +106,14 @@ public class Player : BaseCharacter
     }
 
 
-    public void Initialize(GameObject VirtualCameraRefence) 
+    public void Initialize() 
     {
         base.Awake();
 
-        _playerCamera = VirtualCameraRefence;
+		virtualCamera.Follow = this.transform.Find("Hips/Spine/Spine1/Spine2/WeaponDirection");
+		virtualCamera.LookAt = this.transform.Find("Hips/Spine/Spine1/Spine2/WeaponDirection");
+
+		_playerCamera = virtualCamera.gameObject;
         _animator   = GetComponent<Animator>();
         _controller = GetComponent<CharacterController>();
 		_inventory = new Inventory();

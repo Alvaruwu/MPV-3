@@ -54,11 +54,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerReference = Instantiate(_playerPrefab);
 
-            var virtualCamera = FindObjectOfType<Cinemachine.CinemachineFreeLook>();
-            virtualCamera.Follow = PlayerReference.transform.Find("Hips/Spine/Spine1/Spine2/WeaponDirection");
-            virtualCamera.LookAt = PlayerReference.transform.Find("Hips/Spine/Spine1/Spine2/WeaponDirection");
-
-			PlayerReference.Initialize(virtualCamera.gameObject);
+			PlayerReference.Initialize();
 
             if(_fromLoadingState != null)
             {
